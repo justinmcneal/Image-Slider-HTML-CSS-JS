@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Slider</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="carousel">
+    <div class="slides">
+        <div class="slide"><img src="aaa1.jpg" alt="Image 1" height="800px"></div>
+        <div class="slide"><img src="aaa2.jpg" alt="Image 2" height="800px"></div>
+        <div class="slide"><img src="aaa3.jpg" alt="Image 3" height="800px"></div>
+        <div class="slide"><img src="aaa4.jpg" alt="Image 4" height="800px"></div>
+        <div class="slide"><img src="aaa5.jpg" alt="Image 5" height="800px"></div>
+    </div>
+    <a class="prev" onclick="prevSlide()">&lt;</a> <!--HTML Entities:D-->
+    <a class="next" onclick="nextSlide()">&gt;</a> 
+</div>
+
+<script>
+//why use js? to practice for the website if tutuloy gumamit ng js
+//bat mo pinapahirapan sarili mo, nag search me onti pero hindi nag ai
+//bakit nag js ka eh html and css topic natin? may css naman po sir
+//ilang oras mo to ginawa? 6hrs ko po sinaktan sarili ko sa js
+//amen
+let slideIndex = 0; // initializes variable
+function showSlides() {
+    const slides = document.querySelectorAll('.slide'); //selec/retrieve all elements within the class slide
+    if (slideIndex >= slides.length) { 
+        slideIndex = 0; //if true, it sets slideIndex back to 0 to loop back to the first slide
+    } 
+    else if (slideIndex < 0) {
+        slideIndex = slides.length - 1; //if true, it sets slideIndex to the last slide index para umikot? wrap? sa last slide
+    }
+
+    const offset = -slideIndex * 100 + '%'; // slide the pic full content
+    document.querySelector('.slides').style.transform = `translateX(${offset})`; //Update the transform #slide to move the slides based on calculated offset. 
+}
+
+function nextSlide() { //if pinindot ni user > arrow mag increment
+    slideIndex++;
+    showSlides();
+}
+
+function prevSlide() { //if pinindot ni user previous < decrement (reversed it)
+    slideIndex--;
+    showSlides();
+} 
+</script>
+
+</body>
+</html>
